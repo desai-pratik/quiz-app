@@ -8,7 +8,7 @@ const Popup = ({ style, startQuiz, score, total }) => {
   const queryParams = new URLSearchParams(location.search);
   const quizType = queryParams.get("type");
   const [time, setTime] = useState("start");
-  const [title, setTitle] = useState(`Welcome to the ${quizType} Quiz`);
+  const [title, setTitle] = useState(`Welcome to the ${quizType.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())} Quiz`);
   const [text, setText] = useState("This is a quiz application built using ReactJS. ");
   const [buttonText, setButtonText] = useState("Start the quiz");
   const [endHome, setEndHome] = useState(null);
@@ -31,7 +31,7 @@ const Popup = ({ style, startQuiz, score, total }) => {
 
   useEffect(() => {
     if (time === "end") {
-      setText(`You have completed the ${quizType} quiz. <br /> You got: <strong>${score}</strong> out of <strong>${total}</strong> questions right.`);
+      setText(`You have completed the ${quizType.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())} quiz. <br /> You got: <strong>${score}</strong> out of <strong>${total}</strong> questions right.`);
     }
   }, [time, score, total]);
 

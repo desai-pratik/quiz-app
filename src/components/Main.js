@@ -11,7 +11,7 @@ const Main = () => {
         <h1 className="text-5xl font-bold mb-4">Welcome to the Quiz</h1>
         <p className="text-lg mb-6">Dive into our quizzes and discover the wonders of knowledge.</p>
         <div className="flex flex-wrap justify-center">
-          {['generalKnowledge', 'react', 'maths', 'node', 'indianHistory'].map((type) => (
+          {['generalKnowledge', 'react', 'maths', 'node', 'indianHistory', 'scienceAndTechnology'].map((type) => (
             <Link
               key={type}
               to={`/quiz?type=${type}`}

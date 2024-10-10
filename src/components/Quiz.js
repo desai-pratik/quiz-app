@@ -8,6 +8,7 @@ import { reactQuestions } from "../questions/reactQuestions.js";
 import { nodeQuestions } from "../questions/nodeQuestions.js";
 import { mathQuiz } from "../questions/mathQuiz.js";
 import { historyOfIndia } from "../questions/historyOfIndia.js";
+import { scienceAndTechnology } from "../questions/scienceAndTechnology.js";
 
 const Quiz = () => {
   const location = useLocation();
@@ -36,6 +37,8 @@ const Quiz = () => {
       setData(mathQuiz);
     }else if(quizType === "indianHistory") {
       setData(historyOfIndia);
+    }else if(quizType === "scienceAndTechnology") {
+      setData(scienceAndTechnology);
     }
   }, [quizType]);
 
