@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Answers from "./Answers.js";
 import Popup from "./Popup.js";
-// import { data } from "../questions/data.js";
 import { useLocation } from "react-router-dom";
 import { generalKnowledge } from "../questions/generalKnowledge.js";
 import { reactQuestions } from "../questions/reactQuestions.js";
@@ -12,8 +11,7 @@ import { scienceAndTechnology } from "../questions/scienceAndTechnology.js";
 
 const Quiz = () => {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const quizType = queryParams.get("type");
+  const quizType = new URLSearchParams(location.search).get("type");
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0);
@@ -27,19 +25,15 @@ const Quiz = () => {
   const [classNames, setClassNames] = useState(["", "", "", ""]);
 
   useEffect(() => {
-    if (quizType === "generalKnowledge") {
-      setData(generalKnowledge);
-    } else if(quizType === "react") {
-      setData(reactQuestions);
-    } else if(quizType === "node") {
-      setData(nodeQuestions);
-    }else if(quizType === "maths") {
-      setData(mathQuiz);
-    }else if(quizType === "indianHistory") {
-      setData(historyOfIndia);
-    }else if(quizType === "scienceAndTechnology") {
-      setData(scienceAndTechnology);
-    }
+    const quizzes = {
+      generalKnowledge,
+      react: reactQuestions,
+      node: nodeQuestions,
+      maths: mathQuiz,
+      indianHistory: historyOfIndia,
+      scienceAndTechnology,
+    };
+    setData(quizzes[quizType] || []);
   }, [quizType]);
 
   useEffect(() => {
